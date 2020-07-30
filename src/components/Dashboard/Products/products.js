@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import UploadImage from "../UploadImage/uploadImage";
+import UploadImage from "../../UploadImage/uploadImage";
 import ProductForm from "./productForm";
 import ListProducts from "./listProducts";
-import { db } from "../../firebase";
+import { db } from "../../../firebase";
 import firebase from "firebase";
 
 export default function Products() {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import UploadImage from "../UploadImage/uploadImage";
+import UploadImage from "../../UploadImage/uploadImage";
 
 export default function ProductForm({ HandleSubmit }) {
   const { register, handleSubmit, errors } = useForm();
