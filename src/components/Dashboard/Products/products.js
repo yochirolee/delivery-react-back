@@ -45,7 +45,7 @@ export default function Products() {
 
   return (
     <div className="w-full">
-      <h2>Products</h2>
+      <h2 className='text-white border-b border-gray-700 mb-2'>Products</h2>
       <div className="flex flex-row">
         <div className="w-1/3 rounded bg-white mx-4">
           <ProductForm HandleSubmit={HandleSubmit} />

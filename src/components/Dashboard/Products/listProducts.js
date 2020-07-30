@@ -3,7 +3,7 @@ import React from "react";
 export default function ListProducts({ products, HandleRemove }) {
   return (
     <div className="bg-white w-full">
-      <p className="bg-gray-800 text-white  p-2 h-8">List of Products</p>
+      <p className="bg-gray-800 text-white p-2 h-8">Lista de Productos</p>
       {products.map((product) => (
         <div class="border-b border-gray-400 mb-2 mx-8 lg:border-gray-400 bg-white  p-4 flex flex-col justify-between ">
           <div class="flex items-center justify-between">
@@ -18,7 +18,7 @@ export default function ListProducts({ products, HandleRemove }) {
                   {product.name}
                 </p>
                 <p class="text-gray-700 font-bold leading-none">
-                  {product.price}
+                  $ {product.price}
                 </p>
               </div>
             </div>

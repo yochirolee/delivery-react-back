@@ -1,21 +1,25 @@
-import React from 'react';
+import React from "react";
 
-export default function NavBar(){
-
-    return(
-        <nav>
-        <div className="bg-gray-800 h-12 items-center  flex">
-          <div className="flex flex-row w-full flex-wrap justify-between mx-20  text-white">
-            <div className="">Logo</div>
-            <div className="w-1/3 flex flex-row justify-between">
-              <div>Actions</div>
-               <div>Avatar</div>
-              <div>A Others</div>
+export default function NavBar({ user, removeAuth }) {
+  return (
+    <nav>
+      <div className="bg-gray-800 h-12 items-center  flex">
+        <div className="flex flex-row w-full flex-wrap lg:justify-between  mx-20  text-white">
+          <div className="">Logo</div>
+          {user ? (
+            <div>
+              <button
+                onClick={removeAuth}
+                className="bg-orange-600 hover:bg-orange-500 px-4 py-1 rounded"
+              >
+                <i className="fa fa-sign-out-alt mr-2"> </i>Salir
+              </button>
             </div>
-          </div>
+          ) : (
+            <></>
+          )}
         </div>
-      </nav>
-    )
-
-
+      </div>
+    </nav>
+  );
 }
