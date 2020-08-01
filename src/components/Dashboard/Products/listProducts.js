@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ListProducts({ products, HandleRemove }) {
   return (
-    <div className="bg-white w-full">
+    <div className="bg-white h-screen overflow-scroll">
       <p className="bg-gray-800 text-white p-2 h-8">Lista de Productos</p>
       {products.map((product) => (
         <div class="border-b border-gray-400 mb-2 mx-8 lg:border-gray-400 bg-white  p-4 flex flex-col justify-between ">
