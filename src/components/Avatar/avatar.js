@@ -3,10 +3,10 @@ import React from 'react';
 
 export default function Avatar({user}){
     return (
-        <div className=" items-center bg-gray-800 background h-40 py-4  border-b border-gray-400">
-        <div className="rounded-full bg-white mx-auto h-20 w-20">
+        <div className=" items-center bg-gray-800 background lg:h-40 h-32 py-4  border-b border-gray-400">
+        <div className="rounded-full bg-white mx-auto lg:h-20 lg:w-20 w-8 h-8 ">
         <img
-          className=" rounded-full relative w-20 h-20 cursor-pointer "
+          className=" rounded-full relative lg:w-20 lg:h-20 w-8 h-8 cursor-pointer "
           src={user.photoURL}
           alt="Avatar"
          

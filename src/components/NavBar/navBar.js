@@ -4,15 +4,15 @@ export default function NavBar({ user, removeAuth }) {
   return (
     <nav>
       <div className="bg-gray-800 h-12 items-center  flex">
-        <div className="flex flex-row w-full flex-wrap lg:justify-between  mx-20  text-white">
+        <div className="flex flex-row w-full flex-wrap lg:justify-between justify-between  lg:mx-20 mx-4  text-white">
           <div className="">Logo</div>
           {user ? (
             <div>
               <button
                 onClick={removeAuth}
-                className="bg-orange-600 hover:bg-orange-500 px-4 py-1 rounded"
+                className="bg-orange-600 hover:bg-orange-500 lg:px-4 px-2 py-1 rounded"
               >
-                <i className="fa fa-sign-out-alt mr-2"> </i>Salir
+                <i className="fa fa-sign-out-alt mr-2"> </i><a className='hidden lg:inline'>Salir</a>
               </button>
             </div>
           ) : (

@@ -4,6 +4,7 @@ import ProductForm from "./productForm";
 import ListProducts from "./listProducts";
 import { db } from "../../../firebase";
 import firebase from "firebase";
+import Spiner from '../../Spiner/spiner';
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -45,15 +46,19 @@ export default function Products() {
 
   return (
     <div className="w-full">
-      <h2 className='text-white border-b border-gray-100 mb-2'>Products</h2>
-      <div className="flex flex-row">
-        <div className="w-1/3 rounded bg-white mx-4">
-          <ProductForm HandleSubmit={HandleSubmit} />
+      <h2 className="text-white border-b border-gray-100 mb-2">Products</h2>
+      {loading ? (
+       <Spiner/>
+      ) : (
+        <div className="flex lg:flex-row flex-col">
+          <div className="lg:w-1/3 rounded bg-white mx-4 mb-4">
+            <ProductForm HandleSubmit={HandleSubmit} />
+          </div>
+          <div className="lg:w-2/3">
+            <ListProducts products={products} HandleRemove={HandleRemove} />
+          </div>
         </div>
-        <div className='w-2/3'>
-          <ListProducts products={products} HandleRemove={HandleRemove} />
-        </div>
-      </div>
+      )}
     </div>
   );
 }

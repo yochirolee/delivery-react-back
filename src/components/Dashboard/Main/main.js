@@ -4,9 +4,9 @@ export default function Main() {
   return (
     <div>
       <h2 className="text-white border-b border-gray-500 mb-2">Main</h2>
-      <div className=" mx-10">
-        <div className="flex flex-row flex-wrap justify-evenly bg-gray-200 p-2 gap-1 mx-4">
-          <div className="w-1/5 rounded bg-white shadow-2xl">
+      <div className=" lg:mx-10">
+        <div className="flex flex-row flex-wrap lg:justify-evenly bg-gray-200 p-2 gap-1 mx-4">
+          <div className="lg:w-1/5 w-full rounded bg-white shadow-2xl">
             <div className="py-2 bg-gray-700 rounded-t text-white text-sm font-bold text-center">
               Total de Ordenes
             </div>

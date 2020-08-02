@@ -8,6 +8,7 @@ import Main from "./Main/main";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Orders from "./Orders/orders";
 import PrivateRoute from '../login/privateRoute';
+import Users from "./Users/users";
 
 export default function Dashboard() {
   const { user } = useContext(AuthContext);
@@ -31,6 +32,9 @@ export default function Dashboard() {
             </Route>
             <Route path="/dashboard/orders">
               <Orders />
+            </Route>
+            <Route path="/dashboard/users">
+              <Users />
             </Route>
           </Switch>
         </div>
