@@ -39,7 +39,7 @@ export default function OrderList({ order, HandleOrderDetails, searchOrder }) {
     <div>
       <div className={`flex  mb-2 flex-row bg-white items-center rounded justify-between ${order.status==='transportando'?('opacity-50'):('')}`}>
         <div
-          className={` border-r text-center font-bold border-dashed px-4 w-1/3 bg-${colorStatus} text-gray-300 `}
+          className={` border-r text-center font-bold border-dashed px-4 lg:w-1/3 bg-${colorStatus} text-gray-300 `}
         >
           <p className="text-muted  text-2xl  ">
             {order.phone}
@@ -49,12 +49,12 @@ export default function OrderList({ order, HandleOrderDetails, searchOrder }) {
         </div>
 
         <div className="py-2 pl-2   text-xl flex  flex-col mx-auto w-1/2  ">
-          <p className=" text-gray-600 text-sm font-bold">{order.status}</p>
-          <p className=" text-xs text-gray-600">{order.address}</p>
+          <p className=" text-gray-600  text-sm font-bold">{order.status}</p>
+          <p className=" lg:text-xs lg:block hidden text-gray-600">{order.address}</p>
         </div>
 
         <div
-          className={` w-2/6 text-xs  ${
+          className={` lg:w-2/6 text-xs  ${
             order.active ? " border-r-8 " : ""
           }  items-center rounded-r p-2 cursor-pointer flex flex-col border-${colorStatus}`}
           onClick={() => HandleOrderDetails(order)}
@@ -64,10 +64,10 @@ export default function OrderList({ order, HandleOrderDetails, searchOrder }) {
           <div className={`text-xl mt-1 text-${colorStatus}`}>
             <i className="fa fa-arrow-alt-circle-right text-xl mt-1"></i>
           </div>
-          <p className="text-gray-700">
+          <p className="text-gray-700 lg:block hidden">
             {moment(order.date.toDate(), "YYYYMMDD").fromNow()}
           </p>
-          <p className="text-muted text-xs my-auto ">
+          <p className="text-muted text-xs my-auto lg:block hidden ">
             {order.region}
           </p>
         </div>

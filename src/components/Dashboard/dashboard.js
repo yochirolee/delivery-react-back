@@ -14,10 +14,10 @@ export default function Dashboard() {
   const { user } = useContext(AuthContext);
   const { removeAuth } = useContext(AuthContext);
   return (
-    <div className="w-full h-full bg-red-800 background ">
+    <div className="w-full bg-red-800 background ">
       <NavBar removeAuth={removeAuth} user={user} />
       <div className=" flex flex-row flex-wrap">
-        <div className="w-1/6 h-screen bg-gray-800 ">
+        <div className="w-1/6 bg-gray-800 ">
           <Avatar user={user} />
           <LeftSideMenu />
         </div>

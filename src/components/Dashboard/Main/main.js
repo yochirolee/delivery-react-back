@@ -82,7 +82,7 @@ export default function Main() {
         <Spiner />
       ) : (
         <div className=" lg:mx-10 mt-10">
-          <div className="flex flex-row flex-wrap lg:justify-evenly  p-2 gap-1 mx-4">
+          <div className="flex flex-row flex-wrap lg:justify-evenly mb-2 lg:p-2 gap-1 lg:mx-4">
             <CardOrdersToday
               ordersNew={ordersNew}
               

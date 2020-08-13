@@ -18,33 +18,28 @@ export default function ListProducts({ products, HandleRemove }) {
       </div>
       <div className="bg-white  w-full overflow-y-auto flex flex-row flex-wrap">
         {products.map((product) => (
-          <div class="  border border-gray-400 h-auto mx-2 my-2 min-w-1/6 ">
-            <div class="flex flex-col ">
+          <div class="  border border-gray-400 h-auto mx-2 my-2 min-w-1/6 shadow-lg ">
+            <div class="flex flex-col  ">
 
-              <div className="flex flex-row justify-end">
+              <div className="flex flex-row justify-end bg-red-700 border-white  border-b-2 -  border-dashed mb-1">
           
-                <button
-                  onClick={(e) => alert(e.preventDefault())}
-                  className="w-8  p-2 text-x font-bold "
-                >
-                  <i className="fa fa-edit text-green-700"></i>
-                </button>
+              
 
                 <button
                   onClick={() => HandleRemove(product)}
-                  className="w-8  p-2 text-x font-bold "
+                  className="w-6  p-1 text-x font-bold "
                 >
-                  <i className="fa fa-times text-red-800"></i>
+                  <i className="fa fa-times text-gray-200"></i>
                 </button>
               </div>
-              <div className="flex flex-col flex-wrap">
+              <div className="flex flex-col flex-wrap ">
                 <img
-                  class="lg:w-10 lg:h-10 h-4 w-4 mx-auto"
+                  class="h-10 w-10 mx-auto"
                   src={product.pictureUrl}
                   alt="avatar"
                 />
                 <div class="text-sm text-center">
-                  <p class="block text-gray-700 text-sm font-bold  mb-1">
+                  <p class="block text-gray-700 text-sm font-bold mx-1   mb-1">
                     {product.name}
                   </p>
                   <p class="text-gray-700 lg:font-bold leading-none">
