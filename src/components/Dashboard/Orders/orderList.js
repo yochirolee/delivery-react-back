@@ -1,74 +1,77 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 
-export default function OrderList({ order, HandleOrderDetails }) {
-  const [colorStatus, setColorStatus] = useState('');
+export default function OrderList({ order, HandleOrderDetails, searchOrder }) {
+  const [colorStatus, setColorStatus] = useState("");
 
   useEffect(() => {
-   let color= colorOrderStatus();
-   setColorStatus(color)
-   console.log(color);
+    let color = colorOrderStatus();
+    setColorStatus(color);
+    console.log(color);
   });
 
   const colorOrderStatus = () => {
-    let color=''
+    let color = "";
     switch (order.status) {
       case "New":
-        color='pink-600';
+        color = "pink-600";
         break;
 
       case "en proceso":
-        color='blue-600';
+        color = "blue-600";
         break;
       case "aceptada":
-        color='orange-600';
+        color = "green-600";
         break;
 
       case "transportando":
-        color="green-600";
+        color = "gray-600";
         break;
 
       default:
         break;
     }
-   
-    return color
+
+    return color;
   };
 
   return (
-    <div >
-      <div className= {'flex  mb-2 flex-row bg-white rounded justify-between'}>
-        <div className="p-2 border-r border-dashed px-4 w-1/3 my-auto">
-          <p className="text-muted text-gray-700 font-bold">{order.phone}</p>
-          <p className="text-muted text-xs text-gray-700">{order.name}</p>
+    <div>
+      <div className={`flex  mb-2 flex-row bg-white items-center rounded justify-between ${order.status==='transportando'?('opacity-50'):('')}`}>
+        <div
+          className={` border-r text-center font-bold border-dashed px-4 w-1/3 bg-${colorStatus} text-gray-300 `}
+        >
+          <p className="text-muted  text-2xl  ">
+            {order.phone}
+          </p>
+          <p className="text-muted text-xs ">{order.name}</p>
+        
         </div>
 
-        <div className="py-2 align-left flex  flex-col  justify-start">
-          <p className="text-muted text-gray-700 my-auto ">
-            <i className="fa fa-location-arrow mx-2 text-pink-700 "></i>
-            Playa
-          </p>
-          <p className="text-muted text-xs text-gray-600">{order.address}</p>
+        <div className="py-2 pl-2   text-xl flex  flex-col mx-auto w-1/2  ">
+          <p className=" text-gray-600 text-sm font-bold">{order.status}</p>
+          <p className=" text-xs text-gray-600">{order.address}</p>
         </div>
 
         <div
-            className= {` w-30 text-xs border-r-8  ${order.active?('bg-gray-700 text-white'):('')}  items-center rounded-r p-2 cursor-pointer flex flex-col border-${colorStatus}`}
-             onClick={() => HandleOrderDetails(order)}
+          className={` w-2/6 text-xs  ${
+            order.active ? " border-r-8 " : ""
+          }  items-center rounded-r p-2 cursor-pointer flex flex-col border-${colorStatus}`}
+          onClick={() => HandleOrderDetails(order)}
         >
-          <p className= {order.active?('bg-gray-700 text-white'):('text-gray-700')}>{order.status}</p>
         
-        
+
           <div className={`text-xl mt-1 text-${colorStatus}`}>
-          <i
-            className='fa fa-arrow-alt-circle-right text-xl mt-1'
-          ></i>
-         </div>
-          <p className={order.active?('bg-gray-700 text-white'):('text-gray-700 text-muted')}>
+            <i className="fa fa-arrow-alt-circle-right text-xl mt-1"></i>
+          </div>
+          <p className="text-gray-700">
             {moment(order.date.toDate(), "YYYYMMDD").fromNow()}
           </p>
-        </div> 
+          <p className="text-muted text-xs my-auto ">
+            {order.region}
+          </p>
+        </div>
       </div>
-      
     </div>
 
     /*  <div class="border border-gray-400 mb-2 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col flex-wrap  justify-between leading-normal">

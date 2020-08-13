@@ -5,10 +5,12 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import Spiner from "../../Spiner/spiner";
 import "./order.css";
+import { findDOMNode } from "react-dom";
 
 export default function Orders() {
   const [loading, setLoading] = useState(false);
   const [orders, setOrders] = useState([]);
+  const [searchOrder, setSearchOrders] = useState([]);
   const [orderDetails, setOrderDetails] = useState([]);
 
   useEffect(() => {
@@ -50,20 +52,25 @@ export default function Orders() {
         break;
     }
     auxOrder.active = false;
-     await firebase
-      .firestore()
-      .collection("orders")
-      .doc(order.id)
-      .set(auxOrder);
+    await firebase.firestore().collection("orders").doc(order.id).set(auxOrder);
   };
 
   const HandleOrderDetails = (order) => {
-    
     orders.forEach((order) => {
       order.active = false;
     });
     order.active = true;
     setOrderDetails(order);
+  };
+
+  const HandleSearch = (e) => {
+    e.preventDefault();
+    let search = e.target.value;
+    console.log(search);
+    const result = [];
+    let finded = orders.filter((order) => order.phone === search);
+    if (finded.length > 0) setSearchOrders(finded);
+    console.log(result);
   };
 
   return (
@@ -75,11 +82,24 @@ export default function Orders() {
         ) : (
           <div className="flex lg:flex-row md:flex-col flex-col-reverse px-2">
             <div class="  px-2   lg:mx-10 overflow-y-auto overflow-x-hidden h-screen lg:w-1/2">
+              <div className='bg-gray-800 my-2 p-2 text-white '>
+              <input
+                type="text"
+                placeholder="Buscar"
+                className="rounded px-4 text-gray-600"
+                onChange={(e) => HandleSearch(e)}
+              ></input>
+              <button>
+                <i className="fa fa-search mx-4"></i>
+              </button>
+              </div>
+
               {orders.map((order) =>
                 order.status != "done" ? (
                   <div>
                     <OrderList
                       order={order}
+                      searchOrder={searchOrder}
                       HandleOrderDetails={HandleOrderDetails}
                     />
                   </div>
