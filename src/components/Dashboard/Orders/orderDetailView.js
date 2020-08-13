@@ -37,7 +37,7 @@ export default function OrderDetailsView({ orderDetails, HandleStatus }) {
            
             <button
               onClick={() => HandleStatus(orderDetails)}
-              className="border-none w-64 mt-8 mx-auto bg-green-600 p-2  rounded text-white"
+              className="border-none w-64 mt-8 mx-auto bg-gray-700 p-2  rounded text-white"
             >
               {orderDetails.status}
             </button>

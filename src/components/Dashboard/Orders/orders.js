@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import OrderList from "./orderList";
 import OrderDetailsView from "./orderDetailView";
-import OrdersStatus from "./ordersStatus";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import Spiner from "../../Spiner/spiner";
+import './order.css'
 
 
 export default function Orders() {
@@ -26,6 +26,7 @@ export default function Orders() {
 
         setOrders(orders);
         setLoading(false);
+       
       });
 
     return () => unsubcribe();
@@ -52,20 +53,61 @@ export default function Orders() {
   };
 
   const HandleOrderDetails = (order) => {
+    orders.forEach(order => {
+      order.active=false;
+    });
+    order.active=true;
     setOrderDetails(order);
   };
   return (
     <div>
+    <h2 className="text-white border-b border-gray-500 mb-2">Orders</h2>
+    <div>
+      {loading ? (
+       <Spiner/>
+       
+      ) : (
+        <div className="flex lg:flex-row md:flex-col flex-col-reverse px-2">
+          <div class="  px-2   lg:mx-10 overflow-y-auto overflow-x-hidden h-screen lg:w-1/2">
+            {orders.map((order) =>
+              order.status != "done" ? (
+                <div>
+                  <OrderList
+                    order={order}
+                    HandleOrderDetails={HandleOrderDetails}
+                  />
+                </div>
+              ) : (
+                <div></div>
+              )
+            )}
+          </div>
+          <div className="w-full mb-4 lg:w-1/2">
+            <OrderDetailsView
+              orderDetails={orderDetails}
+              HandleStatus={HandleStatus}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+  );
+}
+
+
+/**
+ * <div>
       <h2 className="text-white border-b border-gray-500 mb-2">Orders</h2>
       <div>
         {loading ? (
          <Spiner/>
          
         ) : (
-          <div className="flex lg:flex-row md:flex-col flex-col-reverse">
-            <div class="  mx-2  lg:mx-10 ">
+          <div className="flex lg:flex-row md:flex-col flex-col-reverse px-2">
+            <div class="  px-2   lg:mx-10 overflow-y-auto overflow-x-hidden h-screen lg:w-1/2">
               {orders.map((order) =>
-                order.status != "transportando" ? (
+                order.status != "done" ? (
                   <div>
                     <OrderList
                       order={order}
@@ -77,7 +119,7 @@ export default function Orders() {
                 )
               )}
             </div>
-            <div className="w-full mb-4">
+            <div className="w-full mb-4 lg:w-1/2">
               <OrderDetailsView
                 orderDetails={orderDetails}
                 HandleStatus={HandleStatus}
@@ -87,5 +129,4 @@ export default function Orders() {
         )}
       </div>
     </div>
-  );
-}
+ */

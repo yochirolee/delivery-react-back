@@ -15,10 +15,10 @@ export default function ProductForm({ HandleSubmit }) {
   };
 
   return (
-    <div className="p-4 w-full">
+    <div className="p-4 w-full ">
       <form
         id="form-product"
-        className="mx-10 justify-center"
+        className="mx-4 justify-center"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col mt-3 w-full">

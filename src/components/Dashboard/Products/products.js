@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import UploadImage from "../../UploadImage/uploadImage";
 import ProductForm from "./productForm";
 import ListProducts from "./listProducts";
 import { db } from "../../../firebase";
@@ -51,10 +50,10 @@ export default function Products() {
        <Spiner/>
       ) : (
         <div className="flex lg:flex-row flex-col">
-          <div className="lg:w-1/3 rounded bg-white mx-4 mb-4">
+          <div className="lg:w-1/4 rounded bg-white mx-4 mb-4">
             <ProductForm HandleSubmit={HandleSubmit} />
           </div>
-          <div className="lg:w-2/3">
+          <div className="lg:w-3/4 flex flex-row">
             <ListProducts products={products} HandleRemove={HandleRemove} />
           </div>
         </div>
